@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Potentiometer Code</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    pre {
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Raspberry Pi Pico – Potentiometer Code</h2>
+
+  <button onclick="copyCode()">Copy Code</button>
+
+  <pre id="code">
+from machine import Pin, ADC
+from time import sleep
+
+pot = ADC(Pin(26))
+
+while True:
+    pot_value = pot.read_u16()
+    print("Analog Value:", pot_value)
+    sleep(0.2)
+  </pre>
+
+  <script>
+    function copyCode() {
+      const codeText = document.getElementById("code").innerText;
+      navigator.clipboard.writeText(codeText);
+      alert("Code copied!");
+    }
+  </script>
+
+</body>
+</html>
